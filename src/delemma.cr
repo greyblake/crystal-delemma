@@ -9,18 +9,10 @@ module Delemma
   @@mapping = {} of String => String
 
   def self.lemmatize(word : String) : String|Nil
-    downcased_word = downcase(word)
-    capitalized_word = capitalize(word)
+    downcased = downcase(word)
+    capitalized = capitalize(word)
 
-    if mapping[word]?
-      mapping[word]
-    elsif mapping[capitalized_word]?
-      mapping[capitalized_word]
-    elsif mapping[downcased_word]?
-      mapping[downcased_word]
-    else
-      word
-    end
+    mapping[word]? || mapping[capitalized]? || mapping[downcased]? || word
   end
 
   private def self.mapping
