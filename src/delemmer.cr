@@ -1,5 +1,51 @@
+require "csv"
+
 require "./delemmer/*"
 
 module Delemmer
-  # TODO Put your code here
+  # Taken from Morphy project: http://www.danielnaber.de/morphologie/index_en.html
+  MAPPING_FILE = File.expand_path("../../data/morphy-mapping-20110717.csv", __FILE__)
+
+  @@mapping = {} of String => String
+
+  def self.lemme(word : String) : String|Nil
+    downcased_word = downcase(word)
+    capitalized_word = capitalize(word)
+
+    if mapping[word]?
+      mapping[word]
+    elsif mapping[capitalized_word]?
+      mapping[capitalized_word]
+    elsif mapping[downcased_word]?
+      mapping[downcased_word]
+    else
+      nil
+    end
+  end
+
+  private def self.mapping
+    @@mapping.any? ? @@mapping : load_mapping
+  end
+
+  private def self.load_mapping
+    io = File.open(MAPPING_FILE)
+    CSV.each_row(io).each do |row|
+      @@mapping[row[0]] = row[1]
+    end
+    @@mapping
+  end
+
+  private def self.downcase(str)
+    str.downcase.
+      gsub("Ü", "ü").
+      gsub("Ä", "ä").
+      gsub("Ö", "ö")
+  end
+
+  def self.capitalize(str)
+    downcase(str).capitalize.
+      gsub(/^ü/, "Ü").
+      gsub(/^ä/, "Ä").
+      gsub(/^ö/, "Ö")
+  end
 end
