@@ -1,14 +1,18 @@
 require "./spec_helper"
 
 describe Delemmer do
-  describe "#lemme" do
-    it "returns lemme" do
-      Delemmer.lemme("Bücher").should eq "Buch"
-      Delemmer.lemme("BÜCHER").should eq "Buch"
-      Delemmer.lemme("bücher").should eq "Buch"
+  describe "#lemma" do
+    it "returns a lemma of a given word" do
+      Delemmer.lemmatize("Bücher").should eq "Buch"
+      Delemmer.lemmatize("BÜCHER").should eq "Buch"
+      Delemmer.lemmatize("bücher").should eq "Buch"
 
-      Delemmer.lemme("Überraschungen").should eq "Überraschung"
-      Delemmer.lemme("ÜBERRASCHUNGEN").should eq "Überraschung"
+      Delemmer.lemmatize("Überraschungen").should eq "Überraschung"
+      Delemmer.lemmatize("ÜBERRASCHUNGEN").should eq "Überraschung"
+
+      Delemmer.lemmatize("Gesagt").should eq "sagen"
+      Delemmer.lemmatize("sagten").should eq "sagen"
+      Delemmer.lemmatize("sagen").should eq "sagen"
     end
   end
 end

@@ -8,7 +8,7 @@ module Delemmer
 
   @@mapping = {} of String => String
 
-  def self.lemme(word : String) : String|Nil
+  def self.lemmatize(word : String) : String|Nil
     downcased_word = downcase(word)
     capitalized_word = capitalize(word)
 
@@ -19,7 +19,7 @@ module Delemmer
     elsif mapping[downcased_word]?
       mapping[downcased_word]
     else
-      nil
+      word
     end
   end
 
@@ -31,6 +31,7 @@ module Delemmer
     io = File.open(MAPPING_FILE)
     CSV.each_row(io).each do |row|
       @@mapping[row[0]] = row[1]
+      @@mapping[row[1]] = row[1]
     end
     @@mapping
   end
@@ -42,7 +43,7 @@ module Delemmer
       gsub("Ö", "ö")
   end
 
-  def self.capitalize(str)
+  private def self.capitalize(str)
     downcase(str).capitalize.
       gsub(/^ü/, "Ü").
       gsub(/^ä/, "Ä").
