@@ -18,8 +18,8 @@ dependencies:
 ```crystal
 require "delemma"
 
-Delemma.lemmatize("Bücher")   # => "Buch"
-Delemmer.lemmatize("gesagt")  # => "sagen"
+Delemma.lemmatize("Bücher")  # => "Buch"
+Delemma.lemmatize("gesagt")  # => "sagen"
 ```
 
 ## Contributors
