@@ -1,6 +1,6 @@
-# Delemma.cr
+# Delemma
 
-Lemmatization tool for German language
+Crystal lemmatization tool for German language.
 
 ## Installation
 
