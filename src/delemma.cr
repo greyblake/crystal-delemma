@@ -1,8 +1,8 @@
 require "csv"
 
-require "./delemmer/*"
+require "./delemma/*"
 
-module Delemmer
+module Delemma
   # Taken from Morphy project: http://www.danielnaber.de/morphologie/index_en.html
   MAPPING_FILE = File.expand_path("../../data/morphy-mapping-20110717.csv", __FILE__)
 

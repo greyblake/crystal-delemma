@@ -1,2 +1,2 @@
 require "spec"
-require "../src/delemmer"
+require "../src/delemma"

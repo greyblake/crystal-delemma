@@ -1,6 +1,6 @@
-# Delemmer.cr
+# Delemma.cr
 
-Word lemmer for German language
+Lemmatization tool for German language
 
 ## Installation
 
@@ -8,15 +8,15 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  delemmer:
-    github: greyblake/delemmer.cr
+  delemma:
+    github: greyblake/crystal-delemma
 ```
 
 ## Usage
 
 
 ```crystal
-require "delemmer"
+require "delemma"
 
 Delemma.lemmatize("Bücher")   # => "Buch"
 Delemmer.lemmatize("gesagt")  # => "sagen"
