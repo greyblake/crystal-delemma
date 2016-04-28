@@ -1,4 +1,4 @@
-# Delemma
+# Delemma [![Build Status](https://travis-ci.org/greyblake/crystal-delemma.svg?branch=master)](https://travis-ci.org/greyblake/crystal-delemma)
 
 Crystal lemmatization tool for German language.
 
